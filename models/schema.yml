@@ -13,6 +13,10 @@ sources:
         - name: purchSE_PRICE
     - name: sales
       identifier: raw_gz_sales
+      freshness:
+        warn_after: {count: 85, period: day}
+        error_after: {count: 90 , period: day}
+      loaded_at_field: date_date
       description: sales list
       columns:
         -  name: id
