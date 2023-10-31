@@ -1,4 +1,5 @@
 SELECT
-*
-FROM sgt_raw_sales AS s
-JOIN stg_raw__product AS p ON s.products_id = p.products_id
+s.*
+, p.purchase_price
+FROM {{ ref('stg_raw__sales')}} AS s
+JOIN {{ ref('stg_raw__product')}} AS p ON s.products_id = p.products_id
