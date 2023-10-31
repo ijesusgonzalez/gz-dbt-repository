@@ -3,6 +3,7 @@ version: 2
 sources:
   - name: raw
     schema: gz_raw_data
+    description: greenweez data
     tables:
     - name: product
       identifier: raw_gz_product
@@ -14,10 +15,12 @@ sources:
       identifier: raw_gz_sales
       description: sales list
       columns:
+        -  name: id
         -  name: date_date
         -  name: orders_id
         -  name: pdt_id
         -  name: revenue
+           description: revenues from greenweez
         -  name: quantity
     - name: ship
       identifier: raw_gz_ship
@@ -28,3 +31,34 @@ sources:
         - name: shipping_fee_1
         - name: logCost
         - name: ship_cost
+      
+models:
+  - name: stg_raw__prodcuts
+    columns:
+      - name: products_id
+      - name: purchase_price
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_raw__sales
+    columns:
+      - name: id 
+        tests:
+          - unique
+          - not_null
+      - name: date_date
+      - name: orders_id
+      - name: products_id
+      - name: revenue
+      - name: quantity
+
+  - name: stg_raw__ship
+    columns:
+       - name: orders_id
+         tests:
+          - unique
+          - not_null
+       - name: shipping_fee
+       - name: log_cost
+       - name: ship_cost
