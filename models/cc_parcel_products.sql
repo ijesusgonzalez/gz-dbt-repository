@@ -1,3 +1,7 @@
+{{ config(
+  materialized='table',
+) }}
+
 SELECT
 c.parcel_id
 , p.model_name
