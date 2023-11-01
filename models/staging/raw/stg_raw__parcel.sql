@@ -13,10 +13,10 @@ renamed as (
         parcel_tracking AS parcel_tracking,
         transporter AS transporter,
         priority AS priority,
-        CAST(date_purchase AS DATE) AS date_purchase,  
-        CAST(date_shipping AS DATE) AS date_shipping, 
-        CAST(date_delivery AS DATE) AS date_delivery, 
-        CAST(datecancelled AS DATE) AS date_cancelled
+        CAST(PARSE_DATE('%B %d, %Y', date_purchase) AS DATE) AS date_purchase,  
+        CAST(PARSE_DATE('%B %d, %Y', date_shipping) AS DATE) AS date_shipping, 
+        CAST(PARSE_DATE('%B %d, %Y', date_delivery) AS DATE) AS date_delivery, 
+        CAST(PARSE_DATE('%B %d, %Y', datecancelled) AS DATE) AS date_cancelled 
 
     from source
 
