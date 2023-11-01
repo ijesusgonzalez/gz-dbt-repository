@@ -1,27 +1,25 @@
-with 
+with
 
-source as (
+    source as (select * from {{ source("raw", "parcel") }}),
 
-    select * from {{ source('raw', 'parcel') }}
+    renamed as (
 
-),
+        select
+            parcel_id as parcel_id,
+            parcel_tracking as parcel_tracking,
+            transporter as transporter,
+            priority as priority,
+            cast(parse_date('%B %d, %Y', date_purchase) as date) as date_purchase,
+            cast(parse_date('%B %d, %Y', date_shipping) as date) as date_shipping,
+            cast(parse_date('%B %d, %Y', date_delivery) as date) as date_delivery,
+            cast(parse_date('%B %d, %Y', datecancelled) as date) as date_cancelled
 
-renamed as (
+        from source
+        -- GROUP BY parcel_id, parcel_tracking, transporter, priority, date_purchase,
+        -- date_shipping, date_delivery, date_cancelled
+        order by parcel_id desc
 
-    select
-        parcel_id AS parcel_id,
-        parcel_tracking AS parcel_tracking,
-        transporter AS transporter,
-        priority AS priority,
-        CAST(PARSE_DATE('%B %d, %Y', date_purchase) AS DATE) AS date_purchase,  
-        CAST(PARSE_DATE('%B %d, %Y', date_shipping) AS DATE) AS date_shipping, 
-        CAST(PARSE_DATE('%B %d, %Y', date_delivery) AS DATE) AS date_delivery, 
-        CAST(PARSE_DATE('%B %d, %Y', datecancelled) AS DATE) AS date_cancelled 
+    )
 
-    from source
-    --GROUP BY parcel_id, parcel_tracking, transporter, priority, date_purchase, date_shipping, date_delivery, date_cancelled
-    ORDER BY parcel_id DESC
-
-)
-
-select * from renamed
+select *
+from renamed

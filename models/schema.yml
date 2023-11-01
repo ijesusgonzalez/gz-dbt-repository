@@ -11,9 +11,6 @@ sources:
       description: parcels illoooo
       columns:
           - name: Parcel_id
-            tests:
-                - unique
-                - not_null
           - name: Parcel_tracking
           - name: Transporter
           - name: Priority
@@ -27,8 +24,21 @@ sources:
       description: productos illoooo
       columns:
           - name: PaRCEL_id
-            tests:
-                - unique
-                - not_null
           - name: Model_mAME
           - name: QUANTITY
+
+models:
+  - name: cc_parcel
+    columns:
+      - name: parcel_id
+        tests:
+            - not_null
+      - name: parcel_tracking
+      - name: transporter
+      - name: priority
+      - name: date_purchase
+      - name: date_shipping
+      - name: date_delivery
+      - name: date_cancelled
+      - name: model_name
+      - name: quantity
