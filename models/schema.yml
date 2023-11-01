@@ -37,32 +37,45 @@ sources:
         - name: ship_cost
       
 models:
-  - name: stg_raw__prodcuts
+  - name: int_orders_margin
+    description: Tira pa casa nen
     columns:
-      - name: products_id
-      - name: purchase_price
-        tests:
-          - unique
-          - not_null
-
-  - name: stg_raw__sales
-    columns:
-      - name: id 
+      - name: orders_id
+        description: descripcion de las ordenes nen
         tests:
           - unique
           - not_null
       - name: date_date
-      - name: orders_id
-      - name: products_id
       - name: revenue
       - name: quantity
+      - name: purchase_cost
+      - name: order_margin
 
-  - name: stg_raw__ship
+
+  - name: int_orders_operational
     columns:
-       - name: orders_id
+      - name: orders_id
+        tests:
+          - unique
+          - not_null
+      - name: date_date
+      - name: revenue
+      - name: quantity
+      - name: purchase_cost
+      - name: order_margin
+      - name: operational_margin
+
+  - name: int_sales_margin
+    columns:
+       - name: id
          tests:
           - unique
           - not_null
-       - name: shipping_fee
-       - name: log_cost
-       - name: ship_cost
+       - name: date_date
+       - name: orders_id
+       - name: products_id
+       - name: revenue
+       - name: quantity
+       - name: purchase_price
+       - name: purchase_cost
+       - name: margin
