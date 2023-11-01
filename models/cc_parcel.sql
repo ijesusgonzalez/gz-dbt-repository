@@ -13,12 +13,12 @@ SELECT
 p.*
 -- , pr.model_name
 -- , pr.quantity
-, EXTRACT(month FROM date_purchase) AS mont_purchase
+, EXTRACT(month FROM date_purchase) AS month_purchase
 ,CASE
 WHEN date_cancelled IS NOT null THEN "Cancelled"
+WHEN date_shipping IS null THEN "In Progress"
+WHEN date_delivery IS null THEN "In Transit"
 WHEN date_delivery IS NOT null THEN "Delivered"
-WHEN date_shipping IS NOT null THEN "Shipped"
-WHEN date_purchase IS NOT null THEN "Purchase"
 END AS status
 ,DATE_DIFF(date_shipping, date_purchase, day) AS expedition_time
 ,DATE_DIFF(date_delivery, date_shipping, day) AS transport_time

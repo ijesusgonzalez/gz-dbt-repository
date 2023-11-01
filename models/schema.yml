@@ -40,5 +40,32 @@ models:
       - name: date_shipping
       - name: date_delivery
       - name: date_cancelled
+      - name: month_purchase
+      - name: status
+      - name: expedition_time
+      - name: transport_time
+      - name: delivery_time
+      - name: delay
+      - name: quantity
       - name: model_name
+
+  - name: cc_parcel_products
+    columns:
+      - name: parcel_id
+        tests:
+            - not_null
+      - name: model_name
+      - name: parcel_tracking
+      - name: transporter
+      - name: priority
+      - name: date_purchase
+      - name: date_shipping
+      - name: date_delivery
+      - name: date_cancelled
+      - name: month_purchase
+      - name: status
+      - name: expedition_time
+      - name: transport_time
+      - name: delivery_time
+      - name: delay
       - name: quantity
