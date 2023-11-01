@@ -19,6 +19,8 @@ renamed as (
         CAST(PARSE_DATE('%B %d, %Y', datecancelled) AS DATE) AS date_cancelled 
 
     from source
+    --GROUP BY parcel_id, parcel_tracking, transporter, priority, date_purchase, date_shipping, date_delivery, date_cancelled
+    ORDER BY parcel_id DESC
 
 )
 

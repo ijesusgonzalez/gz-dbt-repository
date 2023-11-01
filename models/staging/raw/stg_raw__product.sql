@@ -14,6 +14,8 @@ renamed as (
         quantity AS quantity
 
     from source
+    GROUP BY parcel_id, model_name, quantity
+    ORDER BY parcel_id
 
 )
 
