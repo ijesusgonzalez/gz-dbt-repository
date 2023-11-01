@@ -20,7 +20,8 @@ sources:
           - name: DaTeCANcelled
 
     - name: product
-      description: raw_cc_parcel_product
+      identifier: raw_cc_parcel_product
+      description: productos illoooo
       columns:
           - name: PaRCEL_id
           - name: Model_mAME
