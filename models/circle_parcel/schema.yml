@@ -1,20 +1,27 @@
 version: 2
 
-models:
-    - name: raw
-      description: raw_data_circle
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+sources:
+  - name: raw
+    schema: raw_data_circle
+    description: circle data
+    tables:
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
+    - name: parcel
+      identifier: raw_cc_parcel
+      description: parcels illoooo
       columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+          - name: Parcel_id
+          - name: Parcel_tracking
+          - name: Transporter
+          - name: Priority
+          - name: Date_purCHase
+          - name: Date_sHIpping
+          - name: DATE_delivery
+          - name: DaTeCANcelled
+
+    - name: product
+      description: raw_cc_parcel_product
+      columns:
+          - name: PaRCEL_id
+          - name: Model_mAME
+          - name: QUANTITY
