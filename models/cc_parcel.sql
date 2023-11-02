@@ -4,7 +4,7 @@ SELECT
 parcel_id
 ,SUM(quantity) AS quantity
 ,COUNT(DISTINCT model_name) AS nb_model
-FROM {{ref('stg_raw__product')}}
+FROM {{ref('stg_cc_product')}}
 GROUP BY parcel_id)
 
 
