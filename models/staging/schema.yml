@@ -1,0 +1,19 @@
+# Hey Juan! I created this new file with just the stg models schema
+
+models:
+  - name: stg_cc_parcel
+    columns:
+      - name: parcel_id
+      - name: parcel_tracking
+      - name: transporter
+      - name: priority
+      - name: date_purchase
+      - name: date_shipping
+      - name: date_delivery
+      - name: date_cancelled
+
+  - name: stg_cc_products
+    columns:
+      - name: parcel_id
+      - name: model_name
+      - name: quantity
