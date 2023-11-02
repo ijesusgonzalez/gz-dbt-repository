@@ -26,7 +26,7 @@ END AS status
 ,IF(date_delivery IS null, null, IF (DATE_DIFF(date_delivery, date_purchase, day)>5,1,0)) AS delay
 ,m.quantity
 ,m.nb_model
-FROM {{ref('stg_cc_parcel')}} as p
+FROM {{ref('stg_raw__parcel')}} as p
 JOIN nb_model as m
 USING (parcel_id)
 -- GROUP BY parcel_id
