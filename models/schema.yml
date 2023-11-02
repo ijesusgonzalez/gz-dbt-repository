@@ -7,7 +7,7 @@ sources:
     tables:
 
     - name: parcel
-      identifier: raw_cc_parcel
+      identifier: stg_cc_parcel
       description: parcels illoooo
       columns:
           - name: Parcel_id
@@ -20,7 +20,7 @@ sources:
           - name: DaTeCANcelled
 
     - name: product
-      identifier: raw_cc_parcel_product
+      identifier: stg_cc_product
       description: productos illoooo
       columns:
           - name: PaRCEL_id
